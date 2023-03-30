@@ -2,7 +2,7 @@
  * 
  * @author Sir Darey
  * 
- * Day 8: Leetcode Problem 66 - Plus One
+ * Day 9: Leetcode Problem 66 - Plus One
  *
  */
 
