@@ -1,31 +1,38 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**  
 * 
 *  @Sir Darey
 * 
-* Day 75: Problem 91 - Decode Ways
+* Day 76: Problem 78 - Subsets
 * 
 */
 
 public class Day_76_78_Subsets {
 	
-	public int numDecodings(String s) {
-        int prev1 = (s.charAt(0) == '0')? 0 : 1;
-        int prev2 = 1;
-        int current = prev1;
-
-        for (int i=2; i<=s.length(); i++) {
-            current = 0;
-
-            if (s.charAt(i-1) != '0')
-                    current += prev1;
-            if (s.charAt(i-2) == '1' || 
-                (s.charAt(i-2) == '2' && s.charAt(i-1) < '7'))
-                
-                current += prev2;
-
-            prev2 = prev1;
-            prev1 = current;
-        }
-        return current;
-    }
+	 	List<List<Integer>> result = new ArrayList<>();
+	    List<Integer> temp = new ArrayList<>();
+	    int n;
+	    int [] nums;
+	            
+	    public List<List<Integer>> subsets(int[] nums) {
+	        n = nums.length;
+	        this.nums = nums;
+	        recur (0);
+	        return result;
+	    }
+	    
+	    void recur (int i) {
+	        if (i == n) {
+	            result.add(new ArrayList<>(temp));
+	            return;
+	        }
+	        
+	        temp.add(nums[i]);
+	        recur (i + 1);
+	        
+	        temp.remove(temp.size()-1);
+	        recur(i + 1);
+	    }
 }
